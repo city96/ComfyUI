@@ -146,6 +146,28 @@ class ComfyApp {
 						});
 					}
 				}
+				
+				if (output && output.textures) {
+					if (this.textures !== output.textures) {
+						this.textures = output.textures;
+						console.log(output.textures)
+						
+						let img = document.getElementById("sprite1")
+						img.src = "/view?" + new URLSearchParams(output.textures[0]).toString();
+						
+						let wall = document.getElementById("wallsImage")
+						wall.src = "/view?" + new URLSearchParams(output.textures[1]).toString();
+						
+						new Promise(r => setTimeout(r, 350)).then(() => {
+							if (!globalThis.rc) {
+								globalThis.rc = new Raycaster(document.getElementById("wolf-canvas"))
+								rc.init()
+							}
+							rc.loadFloorCeilingImages()
+							
+						})
+					}
+				}
 
 				if (this.imgs && this.imgs.length) {
 					const canvas = graph.list_of_graphcanvas[0];

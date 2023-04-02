@@ -9,7 +9,7 @@ import requests
 
 class Wolf3D:
 	def __init__(self):
-		self.output_dir = os.path.join(r"D:\Software\AI\ComfyUI-dev", "temp")
+		self.output_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))),"temp")
 		self.type = "temp"
 
 	@classmethod
